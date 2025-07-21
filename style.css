@@ -46,16 +46,30 @@ body {
     padding: 50px 20px;
 }
 
+/* Keyframes for the shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 /* Styling for the slogan (h1) */
 .slogan {
     font-family: 'Poppins', sans-serif;
     font-size: 3.2em; /* Sedikit diperbesar */
     font-weight: 700;
-    background: -webkit-linear-gradient(right, #8e2de2, #4a00e0);
+    /* The gradient is now part of a larger background to allow for movement */
+    background: linear-gradient(to right, #8e2de2 20%, #4a00e0 40%, #4a00e0 60%, #8e2de2 80%);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.15); /* Shadow diperhalus */
     margin-bottom: 0.5em;
+    /* Animation properties */
+    animation: shimmer 5s infinite linear;
 }
 
 /* Styling for the subheading */
