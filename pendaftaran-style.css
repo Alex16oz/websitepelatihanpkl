@@ -184,3 +184,17 @@
     50% { transform: translate(200%, 100%); }
     100% { transform: translate(100%, 100%); }
 }
+
+/* Gaya untuk input yang tidak bisa di-edit (readonly) */
+.form-group input[readonly] {
+    background-color: #e9ecef; /* Warna latar belakang sedikit abu-abu */
+    color: #495057;           /* Warna teks lebih gelap agar terbaca */
+    cursor: not-allowed;       /* Mengubah kursor untuk menandakan tidak bisa diklik */
+    border: 1px solid #ced4da; /* Menyamakan border dengan input lain */
+}
+
+/* Menghilangkan bayangan biru saat input readonly diklik (opsional) */
+.form-group input[readonly]:focus {
+    outline: none;
+    box-shadow: none;
+}
