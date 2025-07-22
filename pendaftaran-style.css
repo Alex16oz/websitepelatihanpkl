@@ -1,0 +1,186 @@
+/* From Uiverse.io by Nawsome, with modifications */
+
+/* Gaya Utama untuk Form Registrasi */
+.registration-form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: left;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+.form-group button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.form-group button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Gaya untuk Validasi Error */
+.form-group.invalid input {
+    border-color: #dc3545;
+    background-color: #fbeeed;
+}
+.error-message {
+    color: #dc3545;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: none;
+}
+
+/* --- Kartu Konfirmasi dan Hasilnya --- */
+.confirmation-container {
+    display: none;
+    text-align: center;
+}
+.confirmation-card {
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+.confirmation-card.success {
+     border: 1px solid #155724;
+     background-color: #d4edda;
+     color: #155724;
+}
+ .confirmation-card.error {
+     border: 1px solid #721c24;
+     background-color: #f8d7da;
+     color: #721c24;
+}
+#continue-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    font-size: 1em;
+    border: none; /* Menambahkan ini untuk konsistensi */
+    border-radius: 4px; /* Menambahkan ini untuk konsistensi */
+    cursor: pointer; /* Menambahkan ini untuk konsistensi */
+}
+#continue-btn:hover {
+    background-color: #218838;
+}
+
+/* --- CSS Animasi Loading --- */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.boxes {
+    --size: 32px;
+    --duration: 800ms;
+    height: calc(var(--size) * 2);
+    width: calc(var(--size) * 3);
+    position: relative;
+    transform-style: preserve-3d;
+    transform-origin: 50% 50%;
+    transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px);
+}
+
+.boxes .box {
+    width: var(--size);
+    height: var(--size);
+    top: 0;
+    left: 0;
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+.boxes .box:nth-child(1) {
+    transform: translate(100%, 0);
+    animation: box1 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(2) {
+    transform: translate(0, 100%);
+    animation: box2 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(3) {
+    transform: translate(100%, 100%);
+    animation: box3 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(4) {
+    transform: translate(200%, 0);
+    animation: box4 var(--duration) linear infinite;
+}
+
+.boxes .box > div {
+    --background: #5C8DF6;
+    --top: auto;
+    --right: auto;
+    --bottom: auto;
+    --left: auto;
+    --translateZ: calc(var(--size) / 2);
+    --rotateY: 0deg;
+    --rotateX: 0deg;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--background);
+    top: var(--top);
+    right: var(--right);
+    bottom: var(--bottom);
+    left: var(--left);
+    transform: rotateY(var(--rotateY)) rotateX(var(--rotateX)) translateZ(var(--translateZ));
+}
+
+.boxes .box > div:nth-child(1) { --top: 0; --left: 0; }
+.boxes .box > div:nth-child(2) { --background: #145af2; --right: 0; --rotateY: 90deg; }
+.boxes .box > div:nth-child(3) { --background: #447cf5; --rotateX: -90deg; }
+.boxes .box > div:nth-child(4) { --background: #DBE3F4; --top: 0; --left: 0; --translateZ: calc(var(--size) * 3 * -1); }
+
+@keyframes box1 {
+    0%, 50% { transform: translate(100%, 0); }
+    100% { transform: translate(200%, 0); }
+}
+@keyframes box2 {
+    0% { transform: translate(0, 100%); }
+    50% { transform: translate(0, 0); }
+    100% { transform: translate(100%, 0); }
+}
+@keyframes box3 {
+    0%, 50% { transform: translate(100%, 100%); }
+    100% { transform: translate(0, 100%); }
+}
+@keyframes box4 {
+    0% { transform: translate(200%, 0); }
+    50% { transform: translate(200%, 100%); }
+    100% { transform: translate(100%, 100%); }
+}
