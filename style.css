@@ -10,12 +10,16 @@ body {
 
 /* Navbar container */
 .navbar {
-    background: linear-gradient(to right, #8e2de2, #4a00e0);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
+    /* Pastikan Navbar selalu di atas slideshow */
+    position: relative;
+    z-index: 1002;
+    /* Beri sedikit transparansi agar menyatu dengan latar */
+    background: linear-gradient(to right, rgba(142, 45, 226, 0.85), rgba(74, 0, 224, 0.85));
 }
 
 /* Navbar title */
@@ -131,26 +135,69 @@ body {
         display: flex;
     }
 
-    /* === PERBAIKAN UTAMA: Animasi menjadi 'X' === */
+    /* Animasi hamburger menjadi 'X' */
     .menu-toggle.open .hamburger {
         background-color: transparent; /* Sembunyikan garis tengah */
     }
 
     .menu-toggle.open .hamburger::before {
-        /* Pindahkan ke tengah, lalu putar */
         transform: translateY(0) rotate(45deg);
     }
 
     .menu-toggle.open .hamburger::after {
-        /* Pindahkan ke tengah, lalu putar */
         transform: translateY(0) rotate(-45deg);
     }
 }
 
+/* === CSS UNTUK SLIDESHOW LATAR BELAKANG === */
 
-/* Sisa CSS Anda (tidak berubah) */
+.slideshow-container {
+    position: fixed; /* Tetap di posisi bahkan saat di-scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Setinggi layar */
+    z-index: -1; /* Posisikan di belakang semua elemen lain */
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    /* Durasi total animasi harus sama dengan di JavaScript */
+    animation: fade 15s infinite; 
+}
+
+/* Keyframes animasi yang fleksibel */
+@keyframes fade {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; } /* Gambar muncul */
+  33%  { opacity: 1; } /* Gambar bertahan */
+  43%  { opacity: 0; } /* Gambar menghilang */
+  100% { opacity: 0; }
+}
+
+
+/* === PENYESUAIAN KONTEN UTAMA === */
+
 .content {
+    /* Mengatur agar konten berada di tengah secara vertikal dan horizontal */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Setinggi layar */
+    position: relative;
+    z-index: 1;
     padding: 50px 20px;
+    /* Lapisan gelap agar teks mudah dibaca di atas gambar */
+    background-color: rgba(0, 0, 0, 0.4); 
 }
 
 @keyframes shimmer {
@@ -169,14 +216,17 @@ body {
     text-shadow: 2px 2px 10px rgba(0,0,0,0.15);
     margin-bottom: 0.5em;
     animation: shimmer 5s infinite linear;
+    /* Pastikan warna teks utama putih agar kontras dengan lapisan gelap */
+    color: white;
 }
 
 .subheading {
     font-family: 'Lato', sans-serif;
     font-size: 1.25em;
-    color: #444;
     max-width: 600px;
     margin: 25px auto 0 auto;
     line-height: 1.7;
     font-weight: 400;
+    /* Ubah warna subheading agar kontras */
+    color: #f0f0f0; 
 }
