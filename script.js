@@ -52,9 +52,9 @@ menuToggle.addEventListener('click', () => {
 const SUPABASE_URL = 'https://krgivhcsdnstremfzjbt.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtyZ2l2aGNzZG5zdHJlbWZ6amJ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMxNTczNzAsImV4cCI6MjA2ODczMzM3MH0._ob-RBuadEFxcIHg2GEQDSlb-K_mry3HeqSzFuoPRSM';
 
-// 2. Inisialisasi Supabase Client
-// Baris ini membuat koneksi awal ke proyek Supabase Anda
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// 2. Inisialisasi Supabase Client (INI BAGIAN YANG DIPERBAIKI)
+// Kita akan menamai client kita 'supabaseClient' untuk menghindari konflik
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // 3. (Opsional) Verifikasi koneksi di console browser
 console.log('Koneksi ke Supabase berhasil dibuat:', supabaseClient);
