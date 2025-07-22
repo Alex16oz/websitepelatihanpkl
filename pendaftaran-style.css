@@ -198,3 +198,63 @@
     outline: none;
     box-shadow: none;
 }
+/* --- Desain Dropdown Kustom --- */
+
+.custom-select-wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.custom-select-wrapper select {
+    /* Sembunyikan tampilan asli select box */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Atur tampilan dasar */
+    width: 100%;
+    padding: 10px 40px 10px 10px; /* Beri ruang untuk ikon panah */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    color: #333;
+}
+
+/* Styling untuk placeholder saat belum ada opsi yang dipilih */
+.custom-select-wrapper select:invalid {
+    color: #888;
+}
+
+/* Buat ikon panah kustom */
+.custom-select-wrapper::after {
+    content: '▼';
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #fff;
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+    padding: 9px 10px;
+    border-radius: 0 4px 4px 0;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    bottom: 1px;
+    pointer-events: none; /* Agar klik bisa diteruskan ke select box */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+/* Animasi saat dropdown dibuka */
+.custom-select-wrapper:has(select:focus)::after {
+    transform: rotate(180deg);
+}
+
+/* Fokus pada select box */
+.custom-select-wrapper select:focus {
+    outline: none;
+    border-color: #8e2de2;
+    box-shadow: 0 0 0 2px rgba(142, 45, 226, 0.25);
+}
