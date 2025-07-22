@@ -171,7 +171,7 @@ body {
     background-position: center;
     opacity: 0;
     /* Durasi total animasi harus sama dengan di JavaScript */
-    animation: fade 15s infinite; 
+    animation: fade 20s infinite; 
 }
 
 /* Keyframes animasi yang fleksibel */
