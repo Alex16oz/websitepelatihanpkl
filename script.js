@@ -57,4 +57,4 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // 3. (Opsional) Verifikasi koneksi di console browser
-console.log('Koneksi ke Supabase berhasil dibuat:', supabase);
+console.log('Koneksi ke Supabase berhasil dibuat:', supabaseClient);
