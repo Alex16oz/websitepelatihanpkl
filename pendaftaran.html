@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Pelatihan - LPK Kediri</title>
-    <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="pendaftaran-style.css"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pendaftaran-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -87,7 +89,40 @@
                 </div>
                 <div class="form-group">
                     <label for="kecamatan">Kecamatan:</label>
-                    <input type="text" id="kecamatan" name="kecamatan" placeholder="Kecamatan tempat tinggal" required>
+                    <div class="custom-select-wrapper">
+                        <select id="kecamatan" name="kecamatan" required>
+                            <option value="" disabled selected>Pilih Kecamatan</option>
+                            <option value="Badas">Badas</option>
+                            <option value="Banyakan">Banyakan</option>
+                            <option value="Gampengrejo">Gampengrejo</option>
+                            <option value="Grogol">Grogol</option>
+                            <option value="Gurah">Gurah</option>
+                            <option value="Kandangan">Kandangan</option>
+                            <option value="Kandat">Kandat</option>
+                            <option value="Kayen Kidul">Kayen Kidul</option>
+                            <option value="Kepung">Kepung</option>
+                            <option value="Kras">Kras</option>
+                            <option value="Kunjang">Kunjang</option>
+                            <option value="Mojo">Mojo</option>
+                            <option value="Ngadiluwih">Ngadiluwih</option>
+                            <option value="Ngancar">Ngancar</option>
+                            <option value="Ngasem">Ngasem</option>
+                            <option value="Pagu">Pagu</option>
+                            <option value="Papar">Papar</option>
+                            <option value="Pare">Pare</option>
+                            <option value="Plemahan">Plemahan</option>
+                            <option value="Plosoklaten">Plosoklaten</option>
+                            <option value="Puncu">Puncu</option>
+                            <option value="Purwoasri">Purwoasri</option>
+                            <option value="Ringinrejo">Ringinrejo</option>
+                            <option value="Semen">Semen</option>
+                            <option value="Tarokan">Tarokan</option>
+                            <option value="Wates">Wates</option>
+                            <option value="Kediri (Kota)">Kediri (Kota)</option>
+                            <option value="Mojoroto">Mojoroto</option>
+                            <option value="Pesantren">Pesantren</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="desa">Desa/Kelurahan:</label>
