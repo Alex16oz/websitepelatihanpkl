@@ -8,6 +8,189 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <style>
+        .registration-form {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; 
+        }
+        .form-group button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #8e2de2, #4a00e0);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 700;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .form-group button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        /* Gaya untuk validasi error */
+        .form-group.invalid input {
+            border-color: #dc3545;
+            background-color: #fbeeed;
+        }
+        .error-message {
+            color: #dc3545;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* --- Kartu Konfirmasi --- */
+        .confirmation-container {
+            display: none;
+            text-align: center;
+        }
+        .confirmation-card {
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .confirmation-card.success {
+             border: 1px solid #155724;
+             background-color: #d4edda;
+             color: #155724;
+        }
+         .confirmation-card.error {
+             border: 1px solid #721c24;
+             background-color: #f8d7da;
+             color: #721c24;
+        }
+        #continue-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            font-size: 1em;
+        }
+        #continue-btn:hover {
+            background-color: #218838;
+        }
+
+        /* --- CSS Animasi Loading --- */
+        .loading-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            /* Memberi ruang lebih agar tidak terlalu mepet ke atas */
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .boxes {
+            --size: 32px;
+            --duration: 800ms;
+            height: calc(var(--size) * 2);
+            width: calc(var(--size) * 3);
+            position: relative;
+            transform-style: preserve-3d;
+            transform-origin: 50% 50%;
+            transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px);
+        }
+
+        .boxes .box {
+            width: var(--size);
+            height: var(--size);
+            top: 0;
+            left: 0;
+            position: absolute;
+            transform-style: preserve-3d;
+        }
+
+        .boxes .box:nth-child(1) {
+            transform: translate(100%, 0);
+            animation: box1 var(--duration) linear infinite;
+        }
+
+        .boxes .box:nth-child(2) {
+            transform: translate(0, 100%);
+            animation: box2 var(--duration) linear infinite;
+        }
+
+        .boxes .box:nth-child(3) {
+            transform: translate(100%, 100%);
+            animation: box3 var(--duration) linear infinite;
+        }
+
+        .boxes .box:nth-child(4) {
+            transform: translate(200%, 0);
+            animation: box4 var(--duration) linear infinite;
+        }
+
+        .boxes .box > div {
+            --background: #5C8DF6;
+            --top: auto;
+            --right: auto;
+            --bottom: auto;
+            --left: auto;
+            --translateZ: calc(var(--size) / 2);
+            --rotateY: 0deg;
+            --rotateX: 0deg;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--background);
+            top: var(--top);
+            right: var(--right);
+            bottom: var(--bottom);
+            left: var(--left);
+            transform: rotateY(var(--rotateY)) rotateX(var(--rotateX)) translateZ(var(--translateZ));
+        }
+
+        .boxes .box > div:nth-child(1) { --top: 0; --left: 0; }
+        .boxes .box > div:nth-child(2) { --background: #145af2; --right: 0; --rotateY: 90deg; }
+        .boxes .box > div:nth-child(3) { --background: #447cf5; --rotateX: -90deg; }
+        .boxes .box > div:nth-child(4) { --background: #DBE3F4; --top: 0; --left: 0; --translateZ: calc(var(--size) * 3 * -1); }
+
+        @keyframes box1 {
+            0%, 50% { transform: translate(100%, 0); }
+            100% { transform: translate(200%, 0); }
+        }
+        @keyframes box2 {
+            0% { transform: translate(0, 100%); }
+            50% { transform: translate(0, 0); }
+            100% { transform: translate(100%, 0); }
+        }
+        @keyframes box3 {
+            0%, 50% { transform: translate(100%, 100%); }
+            100% { transform: translate(0, 100%); }
+        }
+        @keyframes box4 {
+            0% { transform: translate(200%, 0); }
+            50% { transform: translate(200%, 100%); }
+            100% { transform: translate(100%, 100%); }
+        }
+    </style>
 </head>
 <body>
 
@@ -25,11 +208,148 @@
 
     <div class="lorem-ipsum-content" style="padding-top: 80px;">
         <h2>Daftar Pelatihan</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+
+        <div id="initial-check-form" class="registration-form">
+            <form id="check-form" novalidate>
+                <div class="form-group" id="nik-group">
+                    <label for="nik">NIK (Nomor Induk Kependudukan):</label>
+                    <input type="text" id="nik" name="nik" placeholder="Masukkan 16 digit NIK Anda" required>
+                    <div class="error-message" id="nik-error"></div>
+                </div>
+                <div class="form-group" id="nama-group">
+                    <label for="nama">Nama Lengkap:</label>
+                    <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap Anda" required>
+                    <div class="error-message" id="nama-error"></div>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Cek Pendaftaran</button>
+                </div>
+            </form>
+        </div>
+        
+        <div id="confirmation-container" class="registration-form" style="display: none;">
+            </div>
+
+        <div id="full-registration-form" class="registration-form" style="display: none;">
+            <h3 style="text-align:center;">Lengkapi Data Diri</h3>
+            <form action="#" method="post">
+                 <div class="form-group">
+                    <label for="full-nama">Nama Lengkap:</label>
+                    <input type="text" id="full-nama" name="nama" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Masukkan alamat email Anda" required>
+                </div>
+                <div class="form-group">
+                    <label for="telepon">Nomor Telepon:</label>
+                    <input type="tel" id="telepon" name="telepon" placeholder="Contoh: 081234567890" required>
+                </div>
+                <div class="form-group">
+                    <label for="alamat">Alamat Lengkap:</label>
+                    <textarea id="alamat" name="alamat" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Kirim Pendaftaran</button>
+                </div>
+            </form>
+        </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
+    <script>
+        const checkForm = document.getElementById('check-form');
+        const nikInput = document.getElementById('nik');
+        const namaInput = document.getElementById('nama');
+        const nikGroup = document.getElementById('nik-group');
+        const namaGroup = document.getElementById('nama-group');
+        const nikError = document.getElementById('nik-error');
+        const namaError = document.getElementById('nama-error');
+        const confirmationContainer = document.getElementById('confirmation-container');
+
+        // HTML untuk animasi loading dengan posisi teks yang diperbaiki
+        const loadingAnimationHTML = `
+            <div class="loading-container">
+                <div class="boxes">
+                    <div class="box"><div></div><div></div><div></div><div></div></div>
+                    <div class="box"><div></div><div></div><div></div><div></div></div>
+                    <div class="box"><div></div><div></div><div></div><div></div></div>
+                    <div class="box"><div></div><div></div><div></div><div></div></div>
+                </div>
+                <p style="margin-top: 80px; font-weight: bold; color: #333;">Memeriksa data...</p>
+            </div>
+        `;
+
+        function showError(group, element, message) {
+            group.classList.add('invalid');
+            element.textContent = message;
+            element.style.display = 'block';
+        }
+
+        function clearError(group, element) {
+            group.classList.remove('invalid');
+            element.style.display = 'none';
+        }
+
+        checkForm.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            let isValid = true;
+
+            if (nikInput.value.trim() === '') {
+                showError(nikGroup, nikError, 'NIK tidak boleh kosong.');
+                isValid = false;
+            } else if (!/^\d{16}$/.test(nikInput.value)) {
+                showError(nikGroup, nikError, 'NIK harus terdiri dari 16 digit angka.');
+                isValid = false;
+            } else {
+                clearError(nikGroup, nikError);
+            }
+
+            if (namaInput.value.trim() === '') {
+                showError(namaGroup, namaError, 'Nama tidak boleh kosong.');
+                isValid = false;
+            } else {
+                clearError(namaGroup, namaError);
+            }
+
+            if (!isValid) {
+                return;
+            }
+
+            document.getElementById('initial-check-form').style.display = 'none';
+            confirmationContainer.style.display = 'block';
+            confirmationContainer.innerHTML = loadingAnimationHTML;
+            
+            setTimeout(() => {
+                const isRegistered = (nikInput.value === '1111222233334444');
+                
+                if (isRegistered) {
+                    confirmationContainer.innerHTML = `
+                        <div class="confirmation-card error">
+                            <p>NIK Anda sudah terdaftar. Anda tidak bisa mendaftar lagi.</p>
+                        </div>
+                    `;
+                     setTimeout(() => {
+                         confirmationContainer.style.display = 'none';
+                         document.getElementById('initial-check-form').style.display = 'block';
+                     }, 3000);
+                } else {
+                    confirmationContainer.innerHTML = `
+                        <div class="confirmation-card success">
+                            <p>Data Anda belum terdaftar. Silakan lanjutkan ke tahap berikutnya.</p>
+                            <button id="continue-btn" class="form-group button">Lanjutkan Pendaftaran</button>
+                        </div>
+                    `;
+
+                    document.getElementById('continue-btn').addEventListener('click', () => {
+                        confirmationContainer.style.display = 'none';
+                        document.getElementById('full-registration-form').style.display = 'block';
+                        document.getElementById('full-nama').value = namaInput.value;
+                    });
+                }
+            }, 2500); 
+        });
+    </script>
 </body>
 </html>
