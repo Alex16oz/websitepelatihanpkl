@@ -13,9 +13,14 @@
 
     <div class="navbar">
         <span class="title">LPK Kediri</span>
-        <a href="#services">Daftar Pelatihan</a>
-        <a href="#about">Kejuruan</a>
-        <a href="#home">Beranda</a>
+        <div class="menu-toggle">
+            <div class="hamburger"></div>
+        </div>
+        <div class="nav-links">
+            <a href="#services">Daftar Pelatihan</a>
+            <a href="#about">Kejuruan</a>
+            <a href="#home">Beranda</a>
+        </div>
     </div>
 
     <div class="content">
@@ -23,6 +28,16 @@
         <p class="subheading">Asah potensimu melalui program pelatihan intensif, gratis, dan bersertifikat di BLK Kediri. Ambil langkah pertamamu menuju sukses hari ini.</p>
     </div>
     
-    
+    <script>
+        // JavaScript untuk fungsionalitas toggle menu
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            menuToggle.classList.toggle('open');
+        });
+    </script>
+
 </body>
 </html>

@@ -1,84 +1,182 @@
 /* Basic body styling */
 body {
-    font-family: 'Lato', sans-serif; /* Mengganti font default body */
+    font-family: 'Lato', sans-serif;
     margin: 0;
     background-color: #f4f4f4;
-    text-align: center; /* Center align all text */
+    text-align: center;
+    /* Mencegah scroll horizontal saat drawer aktif */
+    overflow-x: hidden;
 }
 
 /* Navbar container */
 .navbar {
     background: linear-gradient(to right, #8e2de2, #4a00e0);
-    overflow: hidden;
-}
-
-/* Navbar links */
-.navbar a {
-    float: right;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 28px 20px;
-    text-decoration: none;
-    font-size: 1em;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
 }
 
 /* Navbar title */
 .navbar .title {
-    float: left;
-    display: block;
     color: white;
-    text-align: center;
-    padding: 28px 20px;
-    text-decoration: none;
     font-weight: bold;
     font-size: 1.2em;
 }
 
-/* Change color on hover */
-.navbar a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: white;
+/* Link navigasi untuk desktop */
+.nav-links {
+    text-align: right;
 }
 
-/* Main content styling */
+.nav-links a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 25px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 700;
+    border-radius: 25px;
+    margin: 0 5px;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: white;
+    color: #4a00e0;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.nav-links a:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Hamburger Menu Styling */
+.menu-toggle {
+    display: none; /* Sembunyikan di desktop */
+    width: 25px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1001;
+    position: relative;
+}
+
+.hamburger {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    position: relative;
+    transition: background-color 0.2s ease-out;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: transform 0.3s ease-out;
+}
+
+.hamburger::before {
+    transform: translateY(-8px);
+}
+
+.hamburger::after {
+    transform: translateY(8px);
+}
+
+/* Media Query untuk Mobile (Layar <= 768px) */
+@media screen and (max-width: 768px) {
+    /* Sembunyikan link di desktop */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Mulai dari luar layar */
+        width: 75%;
+        height: 100%;
+        background: linear-gradient(to bottom, #8e2de2, #4a00e0);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        z-index: 1000;
+        padding: 20px;
+    }
+
+    .nav-links.open {
+        right: 0;
+    }
+
+    /* Tampilkan kembali link di dalam drawer */
+    .nav-links a {
+        display: block;
+        width: 80%;
+        margin: 20px 0;
+        font-size: 1.2em;
+    }
+
+    /* Tampilkan tombol hamburger HANYA di mobile */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* === PERBAIKAN UTAMA: Animasi menjadi 'X' === */
+    .menu-toggle.open .hamburger {
+        background-color: transparent; /* Sembunyikan garis tengah */
+    }
+
+    .menu-toggle.open .hamburger::before {
+        /* Pindahkan ke tengah, lalu putar */
+        transform: translateY(0) rotate(45deg);
+    }
+
+    .menu-toggle.open .hamburger::after {
+        /* Pindahkan ke tengah, lalu putar */
+        transform: translateY(0) rotate(-45deg);
+    }
+}
+
+
+/* Sisa CSS Anda (tidak berubah) */
 .content {
     padding: 50px 20px;
 }
 
-/* Keyframes for the shimmer effect */
 @keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
-/* Styling for the slogan (h1) */
 .slogan {
     font-family: 'Poppins', sans-serif;
-    font-size: 3.2em; /* Sedikit diperbesar */
+    font-size: 3.2em;
     font-weight: 700;
-    /* The gradient is now part of a larger background to allow for movement */
     background: linear-gradient(to right, #8e2de2 20%, #4a00e0 40%, #4a00e0 60%, #8e2de2 80%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.15); /* Shadow diperhalus */
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.15);
     margin-bottom: 0.5em;
-    /* Animation properties */
     animation: shimmer 5s infinite linear;
 }
 
-/* Styling for the subheading */
 .subheading {
-    font-family: 'Lato', sans-serif; /* Font yang bersih dan mudah dibaca */
-    font-size: 1.25em; /* Ukuran font disesuaikan */
-    color: #444; /* Warna teks sedikit lebih gelap untuk kontras */
+    font-family: 'Lato', sans-serif;
+    font-size: 1.25em;
+    color: #444;
     max-width: 600px;
-    margin: 25px auto 0 auto; /* Menambah jarak dari slogan */
-    line-height: 1.7; /* Jarak antar baris agar lebih lega */
-    font-weight: 400; /* Ketebalan font normal */
+    margin: 25px auto 0 auto;
+    line-height: 1.7;
+    font-weight: 400;
 }
