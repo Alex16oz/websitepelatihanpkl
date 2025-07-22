@@ -147,6 +147,21 @@ body {
     .menu-toggle.open .hamburger::after {
         transform: translateY(0) rotate(-45deg);
     }
+
+    /* --- PERBAIKAN UNTUK LAYAR KECIL --- */
+    .slogan {
+        font-size: 2.2em; /* Perkecil ukuran font slogan */
+    }
+
+    .subheading {
+        font-size: 1.1em; /* Perkecil ukuran font subheading */
+        line-height: 1.6;
+    }
+    
+    .content {
+        height: auto; /* Biarkan tinggi konten menyesuaikan */
+        min-height: 80vh; /* Tetapkan tinggi minimal */
+    }
 }
 
 /* === CSS UNTUK SLIDESHOW LATAR BELAKANG === */
