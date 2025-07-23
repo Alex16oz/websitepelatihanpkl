@@ -364,11 +364,11 @@ body {
     .card { flex: 0 0 250px; }
 }
 
-/* === FOOTER STYLING === */
+/* === FOOTER STYLING (Desain Baru) === */
 .site-footer {
     background: linear-gradient(to right, #4a00e0, #8e2de2); /* Gradien senada dengan navbar */
     color: #f0f0f0;
-    padding: 40px 0 0 0;
+    padding-top: 50px; /* Menambah padding atas */
     font-family: 'Lato', sans-serif;
 }
 
@@ -381,11 +381,18 @@ body {
     padding: 0 20px;
 }
 
-.footer-about, .footer-links, .footer-social {
-    flex: 1;
-    min-width: 250px;
+/* Mengatur basis flex untuk setiap kolom */
+.footer-left, .footer-center, .footer-right {
+    flex: 1; /* Memberi ruang yang sama pada awalnya */
+    min-width: 280px; /* Lebar minimum sebelum wrap */
     margin: 0 15px 30px 15px;
+    text-align: left; /* Teks rata kiri sebagai default */
 }
+
+/* Kolom kiri dan kanan mengambil lebih banyak ruang jika memungkinkan */
+.footer-left { flex: 1.2; }
+.footer-right { flex: 1.5; }
+
 
 .site-footer h3 {
     font-family: 'Poppins', sans-serif;
@@ -394,59 +401,77 @@ body {
     margin-bottom: 20px;
     border-bottom: 2px solid #ffffff;
     padding-bottom: 10px;
-    display: inline-block;
+    display: inline-block; /* Agar border hanya sepanjang teks */
 }
 
-.footer-about p {
+.footer-left p {
     line-height: 1.7;
-    text-align: left;
+    margin-bottom: 20px;
 }
 
-.footer-links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+/* Ikon Media Sosial di Kiri Bawah */
+.footer-social-icons {
+    display: flex; /* Membuat ikon berjajar horizontal */
+    gap: 12px; /* Jarak antar ikon */
+    margin-top: 15px;
 }
 
-.footer-links ul li {
-    margin-bottom: 12px;
-}
-
-.footer-links a {
-    color: #f0f0f0;
-    text-decoration: none;
-    transition: color 0.3s ease, padding-left 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: #ffffff;
-    font-weight: bold;
-    padding-left: 5px;
-}
-
-.footer-social .social-icon {
-    display: inline-block;
+.footer-social-icons .social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 40px;
     height: 40px;
-    line-height: 40px;
-    text-align: center;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.2);
     color: #ffffff;
-    margin-right: 10px;
     font-size: 1.1em;
     transition: background-color 0.3s, transform 0.3s;
+    text-decoration: none;
 }
 
-.footer-social .social-icon:hover {
+.footer-social-icons .social-icon:hover {
     background-color: #ffffff;
     color: #4a00e0;
     transform: translateY(-3px);
 }
 
+/* Tautan Cepat di Tengah */
+.footer-center ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-center ul li {
+    margin-bottom: 12px;
+}
+
+.footer-center a {
+    color: #f0f0f0;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-center a:hover {
+    color: #ffffff;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+/* Placeholder Google Maps di Kanan */
+.gmaps-placeholder {
+    width: 100%;
+    height: 150px;
+    background-color: #333; /* Warna fallback jika iframe gagal dimuat */
+    border-radius: 8px;
+    overflow: hidden; /* Memastikan iframe tetap di dalam border radius */
+}
+
+/* Bagian Bawah Footer */
 .footer-bottom {
     text-align: center;
-    padding: 15px 0;
+    padding: 20px 0;
     margin-top: 20px;
     background-color: rgba(0, 0, 0, 0.2);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -460,14 +485,18 @@ body {
 /* Penyesuaian untuk Mobile */
 @media (max-width: 768px) {
     .footer-container {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: column; /* Susun kolom secara vertikal */
+        align-items: center; /* Pusatkan konten di mobile */
+        text-align: center; /* Teks rata tengah di mobile */
+    }
+    .footer-left, .footer-center, .footer-right {
+        text-align: center; /* Pastikan semua teks rata tengah */
+        width: 90%; /* Lebar kolom di mobile */
     }
     .site-footer h3 {
-        width: 100%;
-        text-align: center;
+        width: auto;
     }
-     .footer-about p {
-        text-align: center;
+    .footer-social-icons {
+        justify-content: center; /* Pusatkan ikon media sosial */
     }
 }
