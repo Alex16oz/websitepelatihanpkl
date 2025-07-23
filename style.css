@@ -364,6 +364,43 @@ body {
     .card { flex: 0 0 250px; }
 }
 
+/* === GAYA UNTUK BAGIAN TANYA JAWAB (Q&A) === */
+.qa-container {
+    padding: 50px 20px;
+    background-color: #ffffff;
+}
+
+.qa-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.qa-item {
+    max-width: 800px;
+    margin: 0 auto 25px auto;
+    border-left: 4px solid #8e2de2;
+    padding-left: 20px;
+}
+
+.qa-question {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3em;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.qa-answer {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+}
+
+
 /* === FOOTER STYLING (Desain Baru) === */
 .site-footer {
     background: linear-gradient(to right, #4a00e0, #8e2de2); /* Gradien senada dengan navbar */
