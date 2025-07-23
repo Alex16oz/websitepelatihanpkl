@@ -363,3 +363,111 @@ body {
 @media screen and (max-width: 768px) {
     .card { flex: 0 0 250px; }
 }
+
+/* === FOOTER STYLING === */
+.site-footer {
+    background: linear-gradient(to right, #4a00e0, #8e2de2); /* Gradien senada dengan navbar */
+    color: #f0f0f0;
+    padding: 40px 0 0 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-about, .footer-links, .footer-social {
+    flex: 1;
+    min-width: 250px;
+    margin: 0 15px 30px 15px;
+}
+
+.site-footer h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5em;
+    color: #ffffff;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ffffff;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.footer-about p {
+    line-height: 1.7;
+    text-align: left;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #f0f0f0;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.footer-social .social-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    margin-right: 10px;
+    font-size: 1.1em;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.footer-social .social-icon:hover {
+    background-color: #ffffff;
+    color: #4a00e0;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* Penyesuaian untuk Mobile */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .site-footer h3 {
+        width: 100%;
+        text-align: center;
+    }
+     .footer-about p {
+        text-align: center;
+    }
+}
